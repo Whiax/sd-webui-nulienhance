@@ -1,0 +1,11 @@
+
+
+#myimgin>*{
+    height: 100%; 
+} 
+
+#myimgin>*>*{
+    min-height: 100%; 
+} 
+
+
