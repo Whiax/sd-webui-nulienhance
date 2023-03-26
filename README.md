@@ -9,17 +9,25 @@ The algorithm tries multiple transformations on contrast / saturation / lighting
 
 ## Usage
 
-The SD-webui needs to be started with the following command:
+#### After 2023/03/25
+```bash
+./webui.sh
+```
+- Navigate to the NUl Image Enhancer Tab
+
+#### Before 2023/03/25  
+See: https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/af2db25c84c9a226ab34959e868fc18740418b4b  
+Before 2023/03/25, the SD-webui needed to be started with the following command:
 ```bash
 ./webui.sh --gradio-queue
 ```
-
+/!\ Warning: This command was experimental and breaks the UI restart button.
 
 ## Requirements
 
+- [sd-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
 - A GPU with > 2GB VRAM (very slow on CPU)
 - [CLIP](https://github.com/openai/CLIP)
-- [sd-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
 - [safetensors](https://github.com/huggingface/safetensors)
 
 ## Models
