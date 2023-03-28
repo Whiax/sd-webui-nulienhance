@@ -85,7 +85,7 @@ def about_tab():
     s = ''
     s += "An algorithm based on decision trees and deep learning models to enhance images.  \n"
     s += "The algorithm is simple, it does not always provide good results on already great images.  \n"
-    s += "The default maximum runtime is 60 seconds / image. The algorithm can provide good results in 10 seconds on some images.  \n"
+    s += "The default maximum runtime is 30 seconds / image. The algorithm can provide good results in 10 seconds on some images.  \n"
     s += "The algorithm tries multiple transformations on contrast / saturation / lighting etc., it evaluates the changes and keeps the best ones.  \n"
     gr.Markdown(s)
     gr.Markdown("## Github")
