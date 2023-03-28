@@ -106,6 +106,7 @@ def help_tab():
     s += "- You can change the maximum execution time, by default it's 30seconds.   \n"
     s += "- By default, the algorithm tends to like dark images too much, if you think the output is too dark or not dark enough, you can adjust this ratio. 1 = 'Do not darken at all', 0 = 'A totally black image is ok', default = 0.9.   \n"
     s += "- The algorithm is not able to enhance all images.   \n"
+    s += "- Intermediate results may look better than the end results. /!\ Intermediate results are cleaned after each run, save them elsewhere if you want to keep them.   \n"
     gr.Markdown(s)
 
 from modules import shared
