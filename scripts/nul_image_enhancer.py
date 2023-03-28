@@ -40,7 +40,7 @@ def enhance_image(base_pil_image, max_delay, n_iter, min_light_ratio):
     kwargs['out_folder'] = res_folder
     pth = 'sac+logos+ava1-l14-linearMSE.safetensors'
     if not exists(pth):
-        pth = './extensions/sd-webui-nulie/' + pth
+        pth = './extensions/sd-webui-nulienhance/' + pth
     kwargs['min_light_ratio'] = min_light_ratio
     kwargs['stop_signal'] = stop_signal
     
