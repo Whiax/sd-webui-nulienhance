@@ -3,9 +3,9 @@ import torch
 import torch.nn as nn
 
 # =============================================================================
-# APACHE 2.0
-# - https://github.com/christophschuhmann/improved-aesthetic-predictor
-# - - reused trained model
+# APACHE 2.0 / https://github.com/christophschuhmann/improved-aesthetic-predictor/blob/main/LICENSE
+# - Credit: https://github.com/christophschuhmann/improved-aesthetic-predictor
+# - - I reused the trained model
 # =============================================================================
 class MLP(nn.Module):
     def __init__(self, input_size):
