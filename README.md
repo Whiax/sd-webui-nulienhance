@@ -5,7 +5,7 @@ The default maximum runtime is 30 seconds / image. The algorithm can provide goo
 The algorithm tries multiple transformations on contrast / saturation / lighting etc., it evaluates the changes and keeps the best ones. 
 
 ## Results / Original repository
-- [NUlIE](https://github.com/Whiax/NUl-Image-Enhancer)
+- Standalone: [NUlIE](https://github.com/Whiax/NUl-Image-Enhancer) (with other results)
 
 
 
