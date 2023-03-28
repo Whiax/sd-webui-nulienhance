@@ -1,4 +1,4 @@
-# SD-WEBUI Extension for NUlIE 🐌
+# SD-WEBUI Extension for NUlIE 🐌 (WORK IN PROGRESS)
 An algorithm based on decision trees and deep learning models to enhance images.  
 The algorithm is simple, it does not always provide good results on already great images.  
 The default maximum runtime is 60 seconds / image. The algorithm can provide good results in 10 seconds on some images.  
