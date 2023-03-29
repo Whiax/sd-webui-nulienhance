@@ -4,6 +4,9 @@ The algorithm is simple, **it does not always provide good results on already gr
 The default maximum runtime is 30 seconds / image. The algorithm can provide good results in 10 seconds on some images.  
 The algorithm tries multiple transformations on contrast / saturation / lighting etc., it evaluates the changes and keeps the best ones. 
 
+Changelog:
+- 2023/03/29: Added support for manual image editing (brightness, saturation, contrast..)
+- 2023/03/28: Fixed issue on loading nn weights
 
 ## Results / Original repository
 - Standalone: [NUlIE](https://github.com/Whiax/NUl-Image-Enhancer) (with other results)
