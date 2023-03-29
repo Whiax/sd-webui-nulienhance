@@ -65,7 +65,7 @@ def enhance_image(base_pil_image, max_delay, n_iter, min_light_ratio):
             dtree, best_node = out
             
             #save
-            base_pth = f'{id_run}_nulie_out.jpg'
+            base_pth = f'{id_run}_nulie_out.png'
             out_image = nulie.log_output(base_pil_image, dtree, best_node, id_run, base_pth, kwargs)
             
             #runtime
@@ -135,15 +135,32 @@ Requested path was: {f}
             sp.Popen(["wsl-open", path])
         else:
             sp.Popen(["xdg-open", path])
-            
 
+import torchvision.transforms.functional as FT
+def alter_right_image(image, out_grimage, contrast, brightness, saturation, gamma, gain):
+    image = FT.adjust_contrast(image, contrast)
+    image = FT.adjust_brightness(image, brightness)
+    image = FT.adjust_saturation(image, saturation)
+    image = FT.adjust_gamma(image, gamma, gain)
+    return image
+
+def save_f(*args):
+    image = alter_right_image(*args)
+    start_time = time.time()
+    id_run = int(start_time*100)
+    image.save(join(res_folder, f'{id_run}.png'))
+
+def reset_f(*args):
+    return 1, 1, 1, 1, 1
+
+def outin_f(inp): return inp
 
 def add_tab():
     with gr.Blocks(analytics_enabled=False) as ui:
         with gr.Tab("Enhance"):
             with gr.Row().style(equal_height=False): 
-                image = gr.Image(type='pil', show_label=False, source="upload", interactive=True, label="Image", elem_id="myimgin").style(height=480)
-                out_grimage = gr.Image(source='canvas', label='ImageOut').style(height=480)
+                image = gr.Image(type='pil', show_label=False, source="upload", interactive=True, label="Input", elem_id="myimgin").style(height=480)
+                out_grimage = gr.Image(source='canvas', label='Output', interactive=False).style(height=480)
             with gr.Row(): 
                 button_enhance = gr.Button("Enhance", variant='primary')
                 button_stop = gr.Button("Stop", variant='primary')
@@ -153,6 +170,22 @@ def add_tab():
                 max_delay = gr.Slider(minimum=10, maximum=120, label='Maximum execution time (seconds)', value=30)
                 n_iter = gr.Slider(minimum=10, maximum=10000, step=50, label='Number of iterations', value=1000)
                 min_light_ratio = gr.Slider(minimum=0.2, maximum=1, step=0.05, label='Minimum lighting ratio', value=0.9)
+            with gr.Row(): 
+                gr.Markdown('or, manually enhance the image', elem_id="ormantext", show_label=False)
+            with gr.Row(): 
+                with gr.Column():
+                    contrast = gr.Slider(minimum=0, maximum=3, label='Change contrast', value=1)
+                with gr.Column():
+                    brightness = gr.Slider(minimum=0, maximum=3, label='Change brightness', value=1)
+                with gr.Column():
+                    saturation = gr.Slider(minimum=0, maximum=3, label='Change saturation', value=1)
+                    outin = gr.Button("Input <= Output", variant='secondary')
+                with gr.Column():
+                    gamma = gr.Slider(minimum=0, maximum=3, label='Change gamma', value=1)
+                    reset = gr.Button("Reset", variant='secondary')
+                with gr.Column():
+                    gain = gr.Slider(minimum=0, maximum=3, label='Change gain', value=1)
+                    save = gr.Button("Save changes", variant='primary')
                 
             button_open_results.click( fn=lambda: open_folder(res_folder), inputs=[], outputs=[])
             button_open_intermediate.click( fn=lambda: open_folder(tmp_folder), inputs=[], outputs=[])
@@ -163,6 +196,12 @@ def add_tab():
             about_tab()
         button_enhance.click(enhance_image, inputs=[image, max_delay, n_iter, min_light_ratio], outputs=[out_grimage])
         button_stop.click(stop)
+        inps = [image, out_grimage, contrast, brightness, saturation, gamma, gain]
+        for slider in inps[2:]:
+            slider.change(alter_right_image, inputs=inps, outputs=[out_grimage])
+        save.click(save_f, inputs=inps)
+        reset.click(reset_f, inputs=inps, outputs=[contrast, brightness, saturation, gamma, gain])
+        outin.click(outin_f, inputs=[out_grimage], outputs=[image])
     return [(ui, "NUl Image Enhancer", "NUlie")]
 
 

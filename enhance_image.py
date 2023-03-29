@@ -106,7 +106,7 @@ def start_process_image(base_pil_image, kwargs):
             assert len(pth_to_rm) > 10, "safety check"
             os.remove(pth_to_rm)
     #crop/preproc image
-    base_pil_image.save(join(tmp_folder,f'{id_run}_step_0.jpg'))
+    base_pil_image.save(join(tmp_folder,f'{id_run}_step_0.png'))
     base_pil_image_c = CenterCrop(224)(Resize(224)(base_pil_image))
     total_light_base = ToTensor()(base_pil_image).mean()
     return base_pil_image_c, total_light_base
@@ -229,7 +229,7 @@ def enhance_image(base_pil_image, model_clip, model_evalaesthetic, eikwargs):
             #     plt.imshow(image)
             #     plt.show()
             if time.time() - last_save_time > 5 or it < 100:
-                tmp_file = join(tmp_folder,f'{id_run}_step_{it}.jpg')
+                tmp_file = join(tmp_folder,f'{id_run}_step_{it}.png')
                 tmp_img = apply_node(base_pil_image, best_node, dtree)
                 tmp_img.save(tmp_file)
                 yield tmp_img
