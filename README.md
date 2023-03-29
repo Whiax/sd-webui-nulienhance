@@ -4,6 +4,7 @@ The algorithm is simple, **it does not always provide good results on already gr
 The default maximum runtime is 30 seconds / image. The algorithm can provide good results in 10 seconds on some images.  
 The algorithm tries multiple transformations on contrast / saturation / lighting etc., it evaluates the changes and keeps the best ones. 
 
+
 ## Results / Original repository
 - Standalone: [NUlIE](https://github.com/Whiax/NUl-Image-Enhancer) (with other results)
 
@@ -36,7 +37,7 @@ Before 2023/03/25, the SD-webui needed to be started with the following command:
 ## Requirements
 
 - [sd-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
-- A GPU with > 2GB VRAM (very slow on CPU)
+- An NVIDIA GPU with > 2GB VRAM (very slow on CPU)
 - [CLIP](https://github.com/openai/CLIP)
 - [safetensors](https://github.com/huggingface/safetensors)
 
@@ -44,3 +45,7 @@ Before 2023/03/25, the SD-webui needed to be started with the following command:
 
 - [Aesthetic predictor](https://github.com/christophschuhmann/improved-aesthetic-predictor): [github.com/christophschuhmann/improved-aesthetic-predictor](https://github.com/christophschuhmann/improved-aesthetic-predictor)
 - [CLIP](https://github.com/openai/CLIP): [github.com/openai/CLIP](https://github.com/openai/CLIP)
+
+## 
+
+⭐ If you like it! And I'll also try to improve this extension!
