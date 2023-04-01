@@ -50,5 +50,6 @@ Before 2023/03/25, the SD-webui needed to be started with the following command:
 - [CLIP](https://github.com/openai/CLIP): [github.com/openai/CLIP](https://github.com/openai/CLIP)
 
 ## 
+➡️ More details on the algorithm: https://medium.com/p/how-i-built-an-ai-image-enhancer-f7d77186678e
 
 ⭐ If you like it! And I'll also try to improve this extension!
